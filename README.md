@@ -9,7 +9,7 @@
 
 ### Q1. GitHub Link of an AI/ML Project
 This repository IS the project!  
-🔗 https://github.com/YOUR_USERNAME/rag-chat-pdf
+🔗 https://github.com/priyadubey7744-dev/ragchatpdf
 
 **What it does:**
 - Upload any PDF document
@@ -26,6 +26,79 @@ I would use 3 methods combined:
 **1. LLM-as-Judge:**
 Pass the question + candidate answer + ideal answer to an LLM
 with a scoring rubric. Ask it to rate 1–10 on correctness,
+depth, and clarity.
+
+**2. Semantic Similarity:**
+Convert candidate answer and ideal answer into embeddings,
+then measure cosine similarity. High similarity = good answer.
+
+**3. Key Concept Check:**
+For technical questions, verify that must-have concepts
+are mentioned in the answer.
+
+Example code:
+```python
+def evaluate_answer(question, candidate_answer, role):
+    prompt = f"""
+    You are interviewing for {role}.
+    Question: {question}
+    Answer: {candidate_answer}
+    Score 1-10 and explain why. Return JSON.
+    """
+    return llm.invoke(prompt)
+```
+
+---
+
+### Q3. What is RAG and How to Use it in an Interview Agent
+
+**RAG = Retrieval-Augmented Generation**
+
+Simple explanation:
+Imagine an LLM is a smart student who read many books
+but doesn't know YOUR specific content.
+RAG gives the LLM a "cheat sheet" of relevant information
+at the time of answering — so it gives accurate answers
+instead of guessing.
+
+**How RAG works:**
+1. Store documents as vectors in a database
+2. User asks a question
+3. System finds the most similar chunks (retrieval)
+4. Chunks are injected into the LLM prompt (augmentation)
+5. LLM generates a grounded answer (generation)
+
+**In an Interview Agent, RAG can:**
+- Store ideal answers → retrieve closest one to evaluate responses
+- Pull role-specific questions from a question bank
+- Give personalized feedback by comparing weak answers
+  to strong reference answers
+
+**This project demonstrates RAG:**
+- PDF is chunked and stored as TF-IDF vectors
+- User question → semantic search → top 4 chunks retrieved
+- Chunks injected into Groq LLM → grounded answer generated
+
+---
+
+## 🚀 How to Run This Project
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
+Get free API key at: https://console.groq.com
+
+---
+
+## 🏗️ Project Structure
+```
+rag-chat-pdf/
+├── app.py                 # Streamlit UI
+├── requirements.txt
+└── src/
+    ├── pdf_processor.py   # PDF extraction + chunking
+    ├── vector_store.py    # TF-IDF embeddings + search
+    └── rag_chain.py       # RAG pipelinewith a scoring rubric. Ask it to rate 1–10 on correctness,
 depth, and clarity.
 
 **2. Semantic Similarity:**
