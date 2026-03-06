@@ -225,7 +225,7 @@ rag-chat-pdf/
 
 ### 🎯 Now Submit Just ONE Link:
 ```
-https://github.com/YOUR_USERNAME/rag-chat-pdf
+https://github.com/priyadubey7744-dev/ragchatpdf/tree/fd874e37ee9f644ccc7b090f16b07cb5f6032720
 ### 1. Clone
 ```bash
 git clone https://github.com/YOUR_USERNAME/rag-chat-pdf.git
