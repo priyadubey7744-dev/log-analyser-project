@@ -9,7 +9,7 @@
 
 ### Q1. GitHub Link of an AI/ML Project
 This repository IS the project!  
-🔗 https://github.com/priyadubey7744-dev/ragchatpdf
+🔗 https://github.com/priyadubey7744-dev/ragchatpdf/tree/fd874e37ee9f644ccc7b090f16b07cb5f6032720
 
 **What it does:**
 - Upload any PDF document
@@ -57,6 +57,48 @@ def evaluate_answer(question, candidate_answer, role):
 Simple explanation:
 Imagine an LLM is a smart student who read many books
 but doesn't know YOUR specific content.
+RAG gives the LLM a "cheat sheet" of relevant information
+at the time of answering — so it gives accurate answers
+instead of guessing.
+
+**How RAG works:**
+1. Store documents as vectors in a database
+2. User asks a question
+3. System finds the most similar chunks (retrieval)
+4. Chunks are injected into the LLM prompt (augmentation)
+5. LLM generates a grounded answer (generation)
+
+**In an Interview Agent, RAG can:**
+- Store ideal answers → retrieve closest one to evaluate responses
+- Pull role-specific questions from a question bank
+- Give personalized feedback by comparing weak answers
+  to strong reference answers
+
+**This project demonstrates RAG:**
+- PDF is chunked and stored as TF-IDF vectors
+- User question → semantic search → top 4 chunks retrieved
+- Chunks injected into Groq LLM → grounded answer generated
+
+---
+
+## 🚀 How to Run This Project
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
+Get free API key at: https://console.groq.com
+
+---
+
+## 🏗️ Project Structure
+```
+rag-chat-pdf/
+├── app.py                 # Streamlit UI
+├── requirements.txt
+└── src/
+    ├── pdf_processor.py   # PDF extraction + chunking
+    ├── vector_store.py    # TF-IDF embeddings + search
+    └── rag_chain.py       # RAG pipelinebut doesn't know YOUR specific content.
 RAG gives the LLM a "cheat sheet" of relevant information
 at the time of answering — so it gives accurate answers
 instead of guessing.
